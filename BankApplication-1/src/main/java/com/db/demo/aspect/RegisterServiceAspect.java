@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.db.demo.model.Accounts;
 import com.db.demo.model.AccountsDAO;
+import com.db.demo.model.Transaction;
 
 @Component
 @Aspect
@@ -29,5 +30,17 @@ public class RegisterServiceAspect {
 	   
 		System.out.println("after method:"+reg.getAccno());
 	}
+	@After(value="execution(* com.db.demo.RegisterService.createTransaction(..)) and args(tra)")
+    public void afterTransactionAdvice(JoinPoint joinpoint,Transaction tra) {
+		if(tra.getTtype()==1) {
+			System.out.println("after method:"+tra.getAmount()+""+tra.getAcc1no());
 
+			accdao.creditAmount(tra.getAmount(),tra.getAcc1no());
+			accdao.debitAmount(tra.getAmount(),tra.getAcc2no());
+		}
+		else {
+			accdao.creditAmount(tra.getAmount(),tra.getAcc2no());
+			accdao.debitAmount(tra.getAmount(),tra.getAcc1no());
+		}
+	}
 }
