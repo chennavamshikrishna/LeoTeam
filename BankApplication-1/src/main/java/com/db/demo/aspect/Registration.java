@@ -2,6 +2,7 @@ package com.db.demo.aspect;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,11 +13,14 @@ public class Registration {
 	@Id
 	private int accno;
 	private String username;
+	@Column(unique=true)
 	private long phoneno;
 	private Date dob;
 	private String address;
+	@Column(unique=true)
 	private long aadhar;
 	private String password;
+	@Column(unique=true)
 	private String email;
 	
 	public long getPhoneno() {

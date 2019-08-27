@@ -3,6 +3,7 @@ package com.db.demo;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.db.demo.aspect.Registration;
 import com.db.demo.model.Accounts;
 import com.db.demo.model.AccountsDAO;
+import com.db.demo.model.BankDAO;
 import com.db.demo.model.Transaction;
 import com.db.demo.model.TransactionDAO;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping(value="/web")
 public class BankController {
@@ -28,16 +31,16 @@ public class BankController {
 	@Autowired
 	TransactionDAO trdao;
 	
-/*	@GetMapping("/data")
+	@Autowired
+	BankDAO dao;
+	
+	@GetMapping("/register")
 	public List<Registration> getCustomers(){
 		
 		return dao.findAll();
 
-}*/
-	@GetMapping(value="hi")
-	public String hello() {
-		return "hello";
-	}
+}
+	
 	@PostMapping("/register")
 	public String insertCustomer(@RequestBody Registration reg) {
 		
@@ -62,6 +65,20 @@ public class BankController {
    public String transaction(@RequestBody Transaction ts) {
 		rserv.createTransaction(ts);
 		return "success";
+	}
+	@PostMapping("/ministatement")
+	public List<Transaction> getMinistatement(@RequestBody Transaction ts) {
+		
+		return trdao.findByAccno(ts.getAcc1no(), ts.getAcc1no());
+	}
+	@PostMapping("/checkbalance")
+	public boolean getBalance(@RequestBody Accounts as) {
+		return accdao.balanceByAccno(as.getAccno(),as.getAmount());
+	}
+	
+	@PostMapping("/login")
+	public boolean login(@RequestBody Registration reg) {
+		return dao.login(reg.getAccno(), reg.getPassword());
 	}
 	
 }
