@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="This Is a page practice about HTML 5 inputs & forms">
+  <link rel="stylesheet" type="text/css" >
+  <title>Input & Forms</title>
+</head>
+<body>
+<header>
+
+</header>
+<main>
+  <div class="loginBox">
+    <h2>Sign Up</h2>
+
+    <form>
+      <p>Full Name</p>
+      <input type="text" name="name" placeholder="Fullname" name="fullname" [(ngModel)]="register.username"
+      >
+
+
+      <p>E-mail Address</p>
+      <input type="email" name="email" placeholder="e-mail" [(ngModel)]="register.email">
+      <p>Password<p>
+      <input type="password" name="pword1" placeholder="Create Password" [(ngModel)]="register.password">
+      <p>Re-enter Password</p>
+      <input type="password" name="pword2" Placeholder="Confirm Password">
+      <p>Date Of Birth</p>
+      <input type="date" name="date" [(ngModel)]="register.dob">
+
+      <p>Aadhar card Number</p>
+      <input type="number" name="aadharno" placeholder="Aadhar Card Number"[(ngModel)]="register.aadhar">
+
+      <p>Phone Number</p>
+      <input type="number" name="phoneno" placeholder="Phone Number" [(ngModel)]="register.phoneno">
+      <p>Address</p>
+      <input type="text" name="Address" placeholder="address" [(ngModel)]="register.address">
+
+      <button (click)="postData()">Register</button>
+
+      <p>Already have an account? <a href="#">Sign In</a></p>
+    </form>
+  </div>
+</main>
+</body>
+</html>

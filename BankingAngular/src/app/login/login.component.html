@@ -1,0 +1,22 @@
+<div class="main">
+  <div class="left">
+    <h1>Login</h1>
+    <p><i>To your Account</i></p>
+    <form>
+      <input type="text" placeholder="Enter Account Number" onfocus="this.placeholder = ''"
+             onblur="this.placeholder = 'Username'" name="accno" [(ngModel)]="accno">
+      <input type="password" placeholder="Password" name="password" onfocus="this.placeholder = ''"
+             onblur="this.placeholder = 'Password'" [(ngModel)]="password">
+      <button class="button1" (click)="postLogin(accno,password)"><span>Login</span></button>
+      <!-- <input  type="submit" class="button1" value="LOG IN"> -->
+    </form>
+    <button class="forgot1" value="Register">Register?</button>
+    <button class="forgot" value="Forgot Password">Forgot Password?</button>
+    <br>
+    <!-- <span>New user?</span> <input type="submit" value="Register Now"> -->
+
+  </div>
+  <div class="bg"></div>
+  <!-- <div class="right">
+<img  #img src="../assets/pigre.jpg"/></div> -->
+</div>
