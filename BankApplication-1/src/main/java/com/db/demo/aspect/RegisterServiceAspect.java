@@ -1,5 +1,9 @@
 package com.db.demo.aspect;
 
+import java.io.IOException;
+
+import javax.mail.MessagingException;
+
 import org.aopalliance.intercept.Joinpoint;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
@@ -13,6 +17,8 @@ import com.db.demo.model.Accounts;
 import com.db.demo.model.AccountsDAO;
 import com.db.demo.model.Transaction;
 
+import Utils.AccountGenerator;
+
 @Component
 @Aspect
 public class RegisterServiceAspect {
@@ -24,6 +30,12 @@ public class RegisterServiceAspect {
 	
 	@After(value="execution(* com.db.demo.RegisterService.createCustomer(..)) and args(reg)")
 	public void afterAdvice(JoinPoint joinpoint, Registration reg) {
+	/*	try {
+			AccountGenerator.sendmail();
+		} catch (MessagingException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
 		acc.setAccno(reg.getAccno());
 		acc.setAmount(0);
 		accdao.save(acc);
@@ -33,7 +45,7 @@ public class RegisterServiceAspect {
 	@After(value="execution(* com.db.demo.RegisterService.createTransaction(..)) and args(tra)")
     public void afterTransactionAdvice(JoinPoint joinpoint,Transaction tra) {
 		if(tra.getTtype()==1) {
-			System.out.println("after method:"+tra.getAmount()+""+tra.getAcc1no());
+			System.out.println("after method:"+tra.getAmount()+""+tra.getAcc1no()+"   "+tra.getAcc2no());
 
 			accdao.creditAmount(tra.getAmount(),tra.getAcc1no());
 			accdao.debitAmount(tra.getAmount(),tra.getAcc2no());

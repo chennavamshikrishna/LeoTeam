@@ -11,10 +11,10 @@ import javax.persistence.Id;
 public class Registration {
 	
 	@Id
-	private int accno;
+	private String accno;
 	private String username;
 	@Column(unique=true)
-	private long phoneno;
+	private String phoneno;
 	private Date dob;
 	private String address;
 	@Column(unique=true)
@@ -23,10 +23,10 @@ public class Registration {
 	@Column(unique=true)
 	private String email;
 	
-	public long getPhoneno() {
+	public String getPhoneno() {
 		return phoneno;
 	}
-	public void setPhoneno(long phoneno) {
+	public void setPhoneno(String phoneno) {
 		this.phoneno = phoneno;
 	}
 	public long getAadhar() {
@@ -35,10 +35,10 @@ public class Registration {
 	public void setAadhar(long aadhar) {
 		this.aadhar = aadhar;
 	}
-	public int getAccno() {
+	public String getAccno() {
 		return accno;
 	}
-	public void setAccno(int accno) {
+	public void setAccno(String accno) {
 		this.accno = accno;
 	}
 	public String getUsername() {

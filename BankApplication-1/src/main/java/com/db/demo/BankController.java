@@ -1,6 +1,8 @@
 package com.db.demo;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -34,15 +36,16 @@ public class BankController {
 	@Autowired
 	BankDAO dao;
 	
-	@GetMapping("/register")
-	public List<Registration> getCustomers(){
-		
-		return dao.findAll();
-
-}
+	@PostMapping("/profile")
+	public List<Registration> getProfile(@RequestBody Registration reg){
+		return dao.findByAccno(reg.getAccno());
+	}
 	
 	@PostMapping("/register")
 	public String insertCustomer(@RequestBody Registration reg) {
+		 
+		
+		   
 		
 		rserv.createCustomer(reg);
 		
@@ -55,25 +58,34 @@ public class BankController {
 	return "success";
 }
 	@PostMapping("/deposit")
-	public String depositAmount(@RequestBody Accounts as) {
+	public Map depositAmount(@RequestBody Accounts as) {
 		accdao.setDepositAmount(as.getAmount(), as.getAccno());
 		
+		 return Collections.singletonMap("response", "success");
 		
-		return "success";
 	}
 	@PostMapping("/transaction")
-   public String transaction(@RequestBody Transaction ts) {
+   public Map transaction(@RequestBody Transaction ts) {
 		rserv.createTransaction(ts);
-		return "success";
+		 return Collections.singletonMap("response", "success");
 	}
-	@PostMapping("/ministatement")
-	public List<Transaction> getMinistatement(@RequestBody Transaction ts) {
+	@PostMapping("/creditstatement")
+	public List<Transaction> getCreditMinistatement(@RequestBody Transaction ts) {
 		
-		return trdao.findByAccno(ts.getAcc1no(), ts.getAcc1no());
+		return trdao.findByAccno1(ts.getAcc1no());
+	}
+	@PostMapping("/debitstatement")
+	public List<Transaction> getDebitMinistatement(@RequestBody Transaction ts) {
+		
+		return trdao.findByAccno2(ts.getAcc2no());
 	}
 	@PostMapping("/checkbalance")
 	public boolean getBalance(@RequestBody Accounts as) {
 		return accdao.balanceByAccno(as.getAccno(),as.getAmount());
+	}
+	@PostMapping("/minimumbalance")
+	public List<Accounts> getMinimumBalance(@RequestBody Accounts as){
+		return accdao.checkBalance(as.getAccno());
 	}
 	
 	@PostMapping("/login")

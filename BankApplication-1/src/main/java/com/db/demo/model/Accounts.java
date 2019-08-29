@@ -9,12 +9,12 @@ import org.springframework.stereotype.Component;
 @Entity
 public class Accounts {
 	@Id
-	int accno;
+	String accno;
 	int amount;
-	public int getAccno() {
+	public String getAccno() {
 		return accno;
 	}
-	public void setAccno(int accno) {
+	public void setAccno(String accno) {
 		this.accno = accno;
 	}
 	public int getAmount() {

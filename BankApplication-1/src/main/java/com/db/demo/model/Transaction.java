@@ -14,8 +14,8 @@ public class Transaction {
 	@Id
 	@GeneratedValue
 	private int transid;
-	private int acc1no;
-	private int acc2no;
+	private String acc1no;
+	private String acc2no;
 	private int ttype;
 	private Date tdate;
 	private int amount;
@@ -25,16 +25,16 @@ public class Transaction {
 	public void setTransid(int transid) {
 		this.transid = transid;
 	}
-	public int getAcc1no() {
+	public String getAcc1no() {
 		return acc1no;
 	}
-	public void setAcc1no(int acc1no) {
+	public void setAcc1no(String acc1no) {
 		this.acc1no = acc1no;
 	}
-	public int getAcc2no() {
+	public String getAcc2no() {
 		return acc2no;
 	}
-	public void setAcc2no(int acc2no) {
+	public void setAcc2no(String acc2no) {
 		this.acc2no = acc2no;
 	}
 	public int getTtype() {

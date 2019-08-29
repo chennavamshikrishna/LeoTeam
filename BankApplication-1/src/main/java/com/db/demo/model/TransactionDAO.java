@@ -7,10 +7,11 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface TransactionDAO extends JpaRepository<Transaction,Integer>{
 
-	@Query("from Transaction t where t.acc1no=?1 or t.acc2no=?2")
-	public List<Transaction> findByAccno(int acc1no,int acc2no);
+	@Query("from Transaction t where t.acc1no=?1")
+	public List<Transaction> findByAccno1(String acc1no);
 
-
+	@Query("from Transaction t where t.acc2no=?1")
+	public List<Transaction> findByAccno2(String acc2no);
 	
 	
 	
