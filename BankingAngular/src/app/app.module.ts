@@ -9,7 +9,14 @@ import { RegisterComponent } from './register/register.component';
 import { RoutingModule } from './routing.module';
 import { TransactionComponent } from './transaction/transaction.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ProfileComponent } from './profile/profile.component';
+import { AddmoneyComponent } from './addmoney/addmoney.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { MatTableModule } from '@angular/material/table';
+import {MatCardModule} from '@angular/material/card';
+import { MainComponent } from './main/main.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { MinistatementComponent } from './ministatement/ministatement.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +25,20 @@ import { ProfileComponent } from './profile/profile.component';
     RegisterComponent,
     TransactionComponent,
     DashboardComponent,
-    ProfileComponent
+    AddmoneyComponent,
+    NavbarComponent,
+    MainComponent,
+    HeaderComponent,
+    FooterComponent,
+    MinistatementComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    RoutingModule
+    RoutingModule,
+    MatTableModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

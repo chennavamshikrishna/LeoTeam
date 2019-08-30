@@ -1,1 +1,30 @@
-<p>dashboard works!</p>
+<app-navbar></app-navbar>
+
+<body>
+<h2> Dashboard component</h2>
+<h2>{{notify}}</h2>
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{this.details[0].username}}</mat-card-title>
+    <mat-card-subtitle>Account number: {{this.details[0].accno}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="./assets/woody.jpg" alt="Woody">
+  <mat-card-content>
+    <table>
+      <ul>
+        <li><strong>Phone Number:</strong>{{this.details[0].phoneno}}</li>
+        <li><strong>Date of Birth:</strong>{{this.details[0].dob}}</li>
+        <li><strong>Aadhar Number: </strong>{{this.details[0].aadhar}}</li>
+        <li><strong>Username: </strong>{{this.details[0].username}}</li>
+        <li><strong>Email </strong>{{this.details[0].email}}</li>
+        <li><strong>Address </strong>{{this.details[0].address}}</li>
+      </ul>
+    </table>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary">EDIT PROFILE</button>
+    <button mat-raised-button color="primary">SAVE CHANGES</button>
+  </mat-card-actions>
+</mat-card>
+</body>

@@ -1,0 +1,11 @@
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  min-height: 1000px;
+  /* Set the fixed height of the footer here */
+  height: 160px;
+  line-height: 60px;
+  color:white;
+  text-align: center;
+}

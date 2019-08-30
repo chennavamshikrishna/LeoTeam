@@ -1,0 +1,33 @@
+<p>navbar works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">D B S</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a router>HOME</a></li>
+      <li><a [routerLink] = "['/dashboard']">DASHBOARD</a></li>
+      <li><a [routerLink] = "['/addmoney']">ADD MONEY</a></li>
+      <li><a [routerLink] = "['/transactions']">TRANSFER MONEY</a></li>
+      <li><a [routerLink]="['/ministatement']" >Mini Statement</a></li>
+    </ul>
+
+  </div>
+</nav>
+
+<div class="container">
+</div>
+
+</body>
+</html>
+

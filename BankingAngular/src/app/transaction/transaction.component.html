@@ -1,1 +1,15 @@
-<p>transaction works!</p>
+<app-navbar></app-navbar>
+
+<div class="jumbotron">
+  <div>
+    <p>Transaction Component</p>
+    <h2>{{balance}}</h2>
+    <input type="text" name="accno"  placeholder="Enter Account number" [(ngModel)]="tra.acc1no">
+  </div>
+  <div>
+    <!--<input type="text" name="amount" placeholder="Enter Amount" [(ngModel)]="tra.amount" >-->
+    <input type="number" required #itemAmount="ngModel" name="itemAmount" [class.is-invalid]="itemAmount.invalid && itemAmount.touched" class="form-control" [(ngModel)]="tra.amount" placeholder="Approval Limit" min="1" pattern="^[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*$" />
+  </div>
+  <button class="btn btn-primary"  name="transfer" (click)="checkBalance()">Click to transfer</button>
+
+</div>

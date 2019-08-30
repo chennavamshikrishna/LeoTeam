@@ -1,0 +1,11 @@
+<app-navbar></app-navbar>
+<div class="jumbotron">
+  <div>
+    <p>Add money Component</p>
+    <input type="text" id="accno"  placeholder="Enter Account number">
+  </div>
+  <div>
+    <input type="text" name="amount" placeholder="Enter Amount" [(ngModel)]="amount">
+  </div>
+  <button class="btn btn-primary" name="addmoney" (click)="addMoney()" >Add Money</button>
+</div>

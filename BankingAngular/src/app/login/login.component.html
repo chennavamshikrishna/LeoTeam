@@ -1,22 +1,46 @@
-<div class="main">
-  <div class="left">
-    <h1>Login</h1>
-    <p><i>To your Account</i></p>
-    <form>
-      <input type="text" placeholder="Enter Account Number" onfocus="this.placeholder = ''"
-             onblur="this.placeholder = 'Username'" name="accno" [(ngModel)]="accno">
-      <input type="password" placeholder="Password" name="password" onfocus="this.placeholder = ''"
-             onblur="this.placeholder = 'Password'" [(ngModel)]="password">
-      <button class="button1" (click)="postLogin(accno,password)"><span>Login</span></button>
-      <!-- <input  type="submit" class="button1" value="LOG IN"> -->
-    </form>
-    <button class="forgot1" value="Register">Register?</button>
-    <button class="forgot" value="Forgot Password">Forgot Password?</button>
-    <br>
-    <!-- <span>New user?</span> <input type="submit" value="Register Now"> -->
+<app-header></app-header>
+<app-main></app-main>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<div class="container" >
+  <div class="card card-container" style="background-color:white">
 
-  </div>
-  <div class="bg"></div>
-  <!-- <div class="right">
-<img  #img src="../assets/pigre.jpg"/></div> -->
-</div>
+    <form class="form-signin"  >
+      <div class="text-center">
+        <h5>{{title}}</h5>
+      </div>
+      <br>
+      <input type="name" name="accno" class="form-control" placeholder="Account number" onfocus="this.placeholder = ''"
+             onblur="this.placeholder = 'Account number'" [(ngModel)]="accno" required>
+      <input type="password" name="inputPassword" class="form-control" placeholder="Password" onfocus="this.placeholder = ''"
+             onblur="this.placeholder = 'Password'" required [(ngModel)]="password">
+      <div id="remember" class="checkbox">
+        <label>
+          <input type="checkbox" value="remember-me">Remember me
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block btn-signin snarl-demo text-center"  (click)="postLogin(accno,password)"  name="sigin">Sign in</button>
+      <span>{{ failure }}</span>
+
+    </form><!-- /form -->
+
+    <!-- <div class="ns-box ns-growl ns-effect-slide ns-type-notice ns-show">
+        <div class="ns-box-inner">
+            <p>This is a message</p>
+        </div>
+        <span class="ns-close"></span>
+    </div>
+<div id="snackbar">Sign in successfull..</div> -->
+    <a href="#" class="forgot-password">
+      Forgot password?
+    </a>
+
+    <a [routerLink]="['/register']" routerLinkActive="router-link-active"  class="forgot-password">
+      Don't have an account?
+    </a>
+  </div><!-- /card-container -->
+
+</div><!-- /container -->
+
+<app-footer></app-footer>

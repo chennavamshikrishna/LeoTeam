@@ -10,6 +10,7 @@ export class RegisterComponent implements OnInit {
 
   register:Register;
   public status:string = "";
+  public failure:string="";
   constructor(private objHttp:HttpClient) { }
 
   ngOnInit() {
@@ -22,13 +23,19 @@ export class RegisterComponent implements OnInit {
       .then(
         data => {
           console.log("POST Request is successful ", data);
-          this.status = "POST Request is successful";
+          this.status=JSON.stringify(data);
+          this.status=JSON.parse(this.status);
+          console.log("POST Request is successful ", this.status);
+
         },
         error => {
           console.log("Error", error);
           this.status = "Error";
+          this.failure="User Details already exist";
+          console.log(this.failure);
         }
       );
+
   }
 
 }

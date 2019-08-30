@@ -1,47 +1,99 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="description" content="This Is a page practice about HTML 5 inputs & forms">
-  <link rel="stylesheet" type="text/css" >
-  <title>Input & Forms</title>
-</head>
-<body>
-<header>
-
-</header>
-<main>
-  <div class="loginBox">
-    <h2>Sign Up</h2>
-
-    <form>
-      <p>Full Name</p>
-      <input type="text" name="name" placeholder="Fullname" name="fullname" [(ngModel)]="register.username"
-      >
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="lib/jcs-auto-validate.js"></script>
+<div class="container">
+  <div class="card">
+    <div class="card-header">Customer Registration Form</div>
 
 
-      <p>E-mail Address</p>
-      <input type="email" name="email" placeholder="e-mail" [(ngModel)]="register.email">
-      <p>Password<p>
-      <input type="password" name="pword1" placeholder="Create Password" [(ngModel)]="register.password">
-      <p>Re-enter Password</p>
-      <input type="password" name="pword2" Placeholder="Confirm Password">
-      <p>Date Of Birth</p>
-      <input type="date" name="date" [(ngModel)]="register.dob">
+    <div class="card-body">
+      <div class="col-lg-12 well">
+        <div class="row">
+          <form >
+            <div class="col-sm-12">
+              <div class="row">
+                <div class="col-sm-12 form-group">
+                  <label>Full Name</label>
+                  <input name="fullName" ngModel type="text"  placeholder="Enter Full Name Here.." class="form-control" [(ngModel)]="register.username" required>
+                </div>
+                <!-- <div class="col-sm-6 form-group">
+                  <label>Last Name</label>
+                  <input name="lastName" ngModel type="text" placeholder="Enter Last Name Here.." class="form-control" required>
+                </div> -->
 
-      <p>Aadhar card Number</p>
-      <input type="number" name="aadharno" placeholder="Aadhar Card Number"[(ngModel)]="register.aadhar">
-
-      <p>Phone Number</p>
-      <input type="number" name="phoneno" placeholder="Phone Number" [(ngModel)]="register.phoneno">
-      <p>Address</p>
-      <input type="text" name="Address" placeholder="address" [(ngModel)]="register.address">
-
-      <button (click)="postData()">Register</button>
-
-      <p>Already have an account? <a href="#">Sign In</a></p>
-    </form>
+              </div>
+              <div class=" form-group">
+                <label>Email Id</label>
+                <input name="eamilId"  ngModel type="text"placeholder="Enter Email id Here.." class="form-control" [(ngModel)]="register.email" required>
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input name="password" ngModel type="password" placeholder="Enter Password Here.." class="form-control" [(ngModel)]="register.password" required>
+              </div>
+              <div class="form-group">
+                <label>Confirm Password</label>
+                <input name="password1" ngModel type="password" placeholder="Enter Password Again.." class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Gender </label>
+                <label class="radio-inline  btn btn-space" aria-required>
+                  <input type="radio" name="gender" id="male">Male
+                </label>
+                <label class="radio-inline btn btn-space">
+                  <input type="radio" name="gender" id="female" >Female
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="gender" id="others">Others
+                </label>
+              </div>
+              <div class="form-group row">
+                <label for="example-date-input" class="col-12 col-form-label" >Date of birth</label>
+                <div class="col-sm-12">
+                  <input name="dateOfBirth"  [(ngModel)]="register.dob" class="form-control"  ngModel type="date"   id="example-date-input" required>
+                </div>
+              </div>
+              <div class="form-group  ">
+                <label> Aadhar Number</label>
+                <input name="aadharId" ngModel type="text" maxlength="12" placeholder="Enter Aadhar number Here.." [(ngModel)]="register.aadhar" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input name="phoneNumber" ngModel type="text" maxlength="10" placeholder="Enter Phone Number Here.." class="form-control" [(ngModel)]="register.phoneno" required>
+              </div>
+              <div class="row">
+                <div class="col-sm-12 form-group">
+                  <label>Address</label>
+                  <input name="address" ngModel type="text" placeholder="Enter Address Here.." class="form-control" [(ngModel)]="register.address">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4 form-group">
+                  <label>City</label>
+                  <input name="city" ngModel type="text" placeholder="Enter City Name Here.." class="form-control">
+                </div>
+                <div class="col-sm-4 form-group">
+                  <label>State</label>
+                  <input name="state" ngModel type="text" placeholder="Enter State Name Here.." class="form-control">
+                </div>
+                <div class="col-sm-4 form-group">
+                  <label>Pin</label>
+                  <input name="pin" ngModel type="text" placeholder="Enter Zip Code Here.." class="form-control">
+                </div>
+              </div>
+              <div class="dropdown form-group">
+              </div>
+              <button type="submit" class="btn btn-primary" (click)="postData()">Create Account</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="d-flex justify-content-center links">
+          Already have an account?<a [routerLink]="['/login']">Login</a>
+        </div>
+        <div class="d-flex justify-content-center">
+          <a [routerLink]="['/login']">Forgot your password?</a>
+        </div>
+      </div>
+    </div>
   </div>
-</main>
-</body>
-</html>
+</div>
